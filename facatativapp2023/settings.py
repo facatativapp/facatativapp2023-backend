@@ -13,8 +13,6 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 from pathlib import Path
 
 import cloudinary
-import cloudinary.api
-import cloudinary.uploader
 import environ
 
 env = environ.Env()
@@ -155,4 +153,7 @@ cloudinary.config(
     cloud_name=env("CLOUDINARY_NAME"),
     api_key=env("CLOUDINARY_API_KEY"),
     api_secret=env("CLOUDINARY_API_SECRET"),
+    api_proxy="http://proxy.server:3128",
 )
+import cloudinary.api
+import cloudinary.uploader
